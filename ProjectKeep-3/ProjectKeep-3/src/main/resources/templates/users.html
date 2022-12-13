@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Users</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+
+<div class="container-fluid text-center">
+    <div class="h1">Manage Users</div>
+    <div class="mr-2">
+        <a class = "h3" th:href="@{users/new}">Add New User</a>
+        <div th:if="${message}" class="alert alert-success text-center">
+            [[${message}]]
+        </div>
+    </div>
+    <div class="mr-2">
+        <a class = "h3" th:href="@{/shoeDetails}">Manage Products</a>
+    </div>
+    <div>
+        <table class="table table-bordered">
+            <thead class="th-dark">
+            <tr>
+                <th>ID</th>
+                <th>E-mail</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Enabled</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each = "user : ${listUsers}">
+                <tr>
+                    <td>[[${user.id}]]</td>
+                    <td>[[${user.email}]]</td>
+                    <td>[[${user.firstName}]]</td>
+                    <td>[[${user.lastName}]]</td>
+                    <td>[[${user.enabled}]]</td>
+                    <td>
+                        <a class="h6 mr-3" th:href="@{'/users/edit/' + ${user.id}}">Change Password</a>
+                        <a class="h6 " th:href="@{'/users/delete/' + ${user.id}}">Delete</a>
+
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+        <div class="text-center">
+            <button type="button" class="btn btn-secondary m-2" onclick="view()">Available Users</button>
+            <button type="button" class="btn btn-secondary m-2" onclick="logout()">Logout</button>
+        </div>
+
+    </div>
+
+</div>
+<script type="text/javascript">
+  function view(){
+  window.location ="[[@{/users}]]";
+  }
+  function logout(){
+  window.location="[[@{/login}]]";
+  }
+</script>
+</body>
+</html>

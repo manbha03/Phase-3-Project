@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Product</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+
+<div class="container-fluid text-center">
+    <div class="h1">Manage Products</div>
+    <div class="mr-2">
+        <a class = "h3" th:href="@{/shoeDetails/new}">Add New Product</a>
+        <div th:if="${message}" class="alert alert-success text-center">
+            [[${message}]]
+        </div>
+    </div>
+
+
+
+    <div>
+        <table class="table table-bordered">
+            <thead class="th-dark">
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Shoe Color</th>
+                <th>Shoe Size</th>
+                <th>Shoe Category</th>
+                <th>Shoe Price</th>
+                <th>Quantity</th>
+                <th>Action</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each = "products : ${listShoes}">
+                <tr>
+                    <td>[[${products.id}]]</td>
+                    <td>[[${products.dateAdded}]]</td>
+                    <td>[[${products.shoeColor}]]</td>
+                    <td>[[${products.shoeSize}]]</td>
+                    <td>[[${products.shoeCategory}]]</td>
+                    <td>[[${products.shoePrice}]]</td>
+                    <td>[[${products.availableInStock}]]</td>
+                    <td>
+                        <a class="h6 mr-3" th:href="@{'/shoeDetails/edit/' + ${products.id}}">Update Product</a>
+                        <a class="h6 " th:href="@{'/shoeDetails/delete/' + ${products.id}}">Delete</a>
+
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+        <div class="text-center">
+            <button type="button" class="btn btn-secondary m-2" onclick="view()">Available Products</button>
+            <button type="button" class="btn btn-secondary m-2" onclick="logout()">Back</button>
+        </div>
+
+    </div>
+
+</div>
+<script type="text/javascript">
+  function view(){
+  window.location ="[[@{/shoeDetails}]]";
+  }
+  function logout(){
+  window.location="[[@{/admin}]]";
+  }
+</script>
+</body>
+</html>

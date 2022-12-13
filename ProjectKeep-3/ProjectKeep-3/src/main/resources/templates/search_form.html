@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${pageTitle}]]</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+
+
+<div class="container-fluid text-center">
+    <div class="h1">[[${pageTitle}]]</div>
+    <form th:action="@{/report/search}" method="post"
+          style="max-width:1000px; margin: 0 auto;">
+        <div class="border border-secondary rounded p-3">
+            <div class="form-group row">
+
+                <div class="col-sm-4">
+                    <label class="col-sm-4 col-form-label">Filter:</label> <input type="text" name="keyword"
+                                                                                  th:value="${keyword}"
+                                                                                  class="form-control" required/>
+                </div>
+                <div class="col-sm-4">
+                    <button type="submit" class="btn btn-primary m-2">Search</button>
+                    <button type="submit" class="btn btn-primary m-2" onclick="view()">Clear</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div>
+        <table class="table table-bordered">
+            <thead class="th-dark">
+            <tr>
+                <th>ID</th>
+                <th>Date Added</th>
+                <th>Shoe Color</th>
+                <th>Shoe Size</th>
+                <th>Shoe Category</th>
+                <th>Added Quantity</th>
+                <th>Shoe Price</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="products : ${listShoes}">
+                <tr>
+                    <td>[[${products.id}]]</td>
+                    <td>[[${products.dateAdded}]]</td>
+                    <td>[[${products.shoeColor}]]</td>
+                    <td>[[${products.shoeSize}]]</td>
+                    <td>[[${products.shoeCategory}]]</td>
+                    <td>[[${products.availableInStock}]]</td>
+                    <td>[[${products.shoePrice}]]</td>
+
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+
+
+    </div>
+    <div class="text-center">
+        <button type="button" class="btn btn-secondary m-2" onclick="logout()">Back</button>
+    </div>
+</div>
+<script type="text/javascript">
+  function view(){
+  window.location ="[[@{/report}]]";
+  }
+  function logout(){
+  window.location="[[@{/report}]]";
+  }
+
+</script>
+</body>
+</html>

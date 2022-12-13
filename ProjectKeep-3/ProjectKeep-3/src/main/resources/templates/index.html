@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SportyShoes</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+
+</head>
+<!--<body th:style="'background-image:url(' + @{/images/sport.jpg} + ');'">-->
+<body>
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" th:href="@{/}">SportyShoes.com</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <a class="btn btn-light my-2 my-sm-0 mr-1" th:href="@{/}">Home</a>
+                <a class="btn btn-light my-2 my-sm-0 mr-1" th:href="@{/login}">Admin</a>
+                <a class="btn btn-light my-2 my-sm-0" th:href="@{/report}">Reports</a>
+            </form>
+        </div>
+    </nav>
+</div>
+<div class="container">
+<div class="jumbotron text-center">
+    <h1>Welcome to Sporty Shoes</h1>
+
+    <h4>About</h4>
+    <p>Sporty Shoes is a company that manufactures and sells sports shoes. They have a walk-in store, and now, they wish to launch their e-commerce portal sportyshoes.com.</p>
+</div>
+    <br/>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <h2>Developed by Dakamanbha Ryngkhlem</h2>
+            <h3>Project for Phase-3</h3>
+            <p>Under the supervision of <strong style="color:blue">Simpl<sub>i</sub>Learn</strong></p>
+        </div>
+        <div class="col-sm-4">
+            <img th:src="@{/images/sport.jpg}" width="100%" height="50%"/>
+        </div>
+    </div>
+
+</div>
+</div>
+</body>
+</html>
+
